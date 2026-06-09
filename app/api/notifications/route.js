@@ -45,24 +45,4 @@ export async function POST(request) {
   }
 }
 
-// DELETE - delete a notification by id
-export async function DELETE(request) {
-  try {
-    const id = request.nextUrl.searchParams.get("id");
 
-    await prisma.notification.delete({
-      where: { id },
-    });
-
-    return NextResponse.json(
-      { message: "Notification deleted" },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json(
-      { message: "Failed to delete notification" },
-      { status: 500 }
-    );
-  }
-}

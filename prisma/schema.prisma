@@ -18,12 +18,11 @@ model Notification {
   notificationType String   // e.g. "Placement", "Event"
   title            String
   message          String
-  isRead           Boolean  @default(false)
-  actionUrl        String?
+  
   createdAt        DateTime @default(now())
   
   // Add the compound index from Stage 3!
-  @@index([studentID, isRead, createdAt])
+  @@index([studentID, createdAt])
 }
 
 
