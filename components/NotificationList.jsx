@@ -15,26 +15,26 @@ export default async function NotificationList() {
 
   return (
     <>
-      {notifications.map((n) => (
+      {notifications.map((notify) => (
         <div
-          key={n.id} 
+          key={notify.id} 
           className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
         >
           <div>
-            <h2 className="font-bold text-2xl">{n.title}</h2>
+            <h2 className="font-bold text-2xl">{notify.title}</h2>
             
-            <div>{n.message}</div>
+            <div>{notify.message}</div>
             
            
             <p className="text-xs text-gray-500 mt-2">
-              {n.isRead ? "Read" : "Unread"} 
+              {notify.isRead ? "Read" : "Unread"} 
             </p>
           </div>
 
           <div className="flex gap-2">
             
-            <RemoveBtn id={n.id} />
-            <Link href={`/editNotification/${n.id}`}>
+            <RemoveBtn id={notify.id} />
+            <Link href={`/editNotification/${notify.id}`}>
               <HiPencilAlt size={24} />
             </Link>
           </div>

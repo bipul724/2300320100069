@@ -70,6 +70,8 @@ export default function AddNotification() {
         placeholder="Student ID"
       />
 
+      
+
       <select
         onChange={(e) => setNotificationType(e.target.value)}
         value={notificationType}
