@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Notification {
+  id               String   @id @default(cuid())
+  studentID        Int      // The user this notification belongs to
+  notificationType String   // e.g. "Placement", "Event"
+  title            String
+  message          String
+  isRead           Boolean  @default(false)
+  actionUrl        String?
+  createdAt        DateTime @default(now())
+  
+  // Add the compound index from Stage 3!
+  @@index([studentID, isRead, createdAt])
+}
+
+
